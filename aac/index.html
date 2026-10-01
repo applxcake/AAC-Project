@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="AI-Based Time Table Preparation for College Management with Material Design 3 and responsive constraint satisfaction solver.">
+  <title>XYZ University | AI Timetable Preparation & Academic Scheduler</title>
+
+  <!-- Google Fonts: Roboto Flex & Material Symbols Outlined -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <!-- MD3 Design Tokens and Main Styles -->
+  <link rel="stylesheet" href="/src/styles/tokens.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+
+  <!-- =======================================================================
+       PUBLIC APPLICATION HEADER & NAVIGATION
+       ======================================================================= -->
+  <header class="public-app-bar" id="public-header">
+    <a class="public-brand" data-route="home" href="#home" title="XYZ University Timetable AI">
+      <div class="brand-icon">
+        <span class="material-symbols-outlined">auto_schedule</span>
+      </div>
+      <div class="public-brand-text">
+        <div class="public-brand-title">XYZ University</div>
+        <div class="public-brand-subtitle">
+          <span class="material-symbols-outlined" style="font-size: 14px;">verified</span> Academic Timetable AI
+        </div>
+      </div>
+    </a>
+
+    <nav class="public-nav-links" aria-label="Portal Navigation">
+      <button class="public-nav-link active" data-route="home" id="pnav-home">Home</button>
+      <button class="public-nav-link" data-route="about" id="pnav-about">About</button>
+      <button class="public-nav-link" data-route="login" id="pnav-login">Sign In</button>
+      <button class="public-nav-link" data-route="register" id="pnav-register">Register</button>
+      <button class="public-nav-link" data-route="dashboard" id="pnav-dashboard" style="display: none;">
+        <span class="material-symbols-outlined" style="font-size: 18px;">dashboard</span> Workspace
+      </button>
+
+      <button class="theme-toggle-btn" id="public-theme-toggle" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+        <span class="material-symbols-outlined">dark_mode</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- =======================================================================
+       PAGE 1: HOME PAGE
+       ======================================================================= -->
+  <div class="app-page active" id="page-home">
+    <div class="public-page-view">
+      <!-- Expressive Hero -->
+      <section class="expressive-hero">
+        <div class="hero-content">
+          <div class="hero-pill-badge">
+            <span class="material-symbols-outlined" style="font-size: 16px;">school</span>
+            <span>XYZ University • Next-Gen AI Academic Scheduling</span>
+          </div>
+
+          <h1 class="hero-title">
+            Intelligent College Timetable Preparation <span class="hero-title-highlight">Powered by AI</span>
+          </h1>
+
+          <p class="hero-description">
+            Eliminate scheduling conflicts effortlessly. Our Constraint Satisfaction Engine generates mathematically sound, faculty-balanced, and room-aware timetables for lecture halls and laboratories in seconds.
+          </p>
+
+          <div class="hero-cta-group">
+            <button class="md-btn md-btn--filled md-btn--expressive" data-route="dashboard" id="btn-hero-workspace">
+              <span class="material-symbols-outlined">auto_schedule</span>
+              <span>Open Timetable Workspace</span>
+            </button>
+
+            <button class="md-btn md-btn--tonal md-btn--expressive" data-route="about" id="btn-hero-about">
+              <span class="material-symbols-outlined">info</span>
+              <span>Explore Engine & Algorithm</span>
+            </button>
+
+            <button class="md-btn md-btn--outlined md-btn--expressive" data-route="login" id="btn-hero-login">
+              <span class="material-symbols-outlined">login</span>
+              <span>Quick Demo Sign In</span>
+            </button>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="stat-pill">
+              <span class="stat-pill-dot"></span>
+              <strong>100%</strong> Zero Hard Conflicts
+            </div>
+            <div class="stat-pill">
+              <span class="material-symbols-outlined" style="font-size: 16px; color: var(--md-sys-color-primary);">psychology</span>
+              <strong>CSP</strong> Heuristic Engine
+            </div>
+            <div class="stat-pill">
+              <span class="material-symbols-outlined" style="font-size: 16px; color: var(--md-sys-color-tertiary);">meeting_room</span>
+              <strong>Venue</strong> Hall & Lab Aware
+            </div>
+            <div class="stat-pill">
+              <span class="material-symbols-outlined" style="font-size: 16px; color: var(--md-sys-color-secondary);">speed</span>
+              <strong>Instant</strong> Client-Side Generation
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card-preview">
+            <div class="preview-header-bar">
+              <div class="preview-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: var(--md-sys-color-primary);">XYZ University • Timetable Spotlight</span>
+            </div>
+            
+            <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="badge badge--primary" style="font-size: 11px;">CSE-3A • Monday Spotlight</span>
+                <span style="font-size: 10px; color: var(--md-sys-color-outline);">LH-101 / LAB-201</span>
+              </div>
+              <div style="background: var(--md-sys-color-surface-container-high); border-radius: 12px; padding: 12px; border-left: 4px solid var(--md-sys-color-primary);">
+                <div style="font-size: 10px; font-weight: 700; color: var(--md-sys-color-primary);">PERIOD 1 (09:00 - 10:00)</div>
+                <div style="font-size: 13px; font-weight: 600; margin-top: 2px;">Data Structures & Algorithms (CS301)</div>
+                <div style="font-size: 11px; color: var(--md-sys-color-on-surface-variant); margin-top: 4px;">Dr. Aris Thorne • Lecture Hall LH-101</div>
+              </div>
+              <div style="background: var(--md-sys-color-surface-container-high); border-radius: 12px; padding: 12px; border-left: 4px solid var(--md-sys-color-tertiary);">
+                <div style="font-size: 10px; font-weight: 700; color: var(--md-sys-color-tertiary);">PERIOD 2-3 (10:00 - 12:00)</div>
+                <div style="font-size: 13px; font-weight: 600; margin-top: 2px;">Advanced Programming Lab (CS304L)</div>
+                <div style="font-size: 11px; color: var(--md-sys-color-on-surface-variant); margin-top: 4px;">Dr. Priya Sharma • Systems Lab LAB-201</div>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: 4px;">
+                <div class="stat-pill" style="flex: 1; font-size: 10px; justify-content: center;">
+                  <span class="material-symbols-outlined" style="font-size: 14px; color: var(--md-sys-color-primary);">check_circle</span> 0 Overlaps
+                </div>
+                <div class="stat-pill" style="flex: 1; font-size: 10px; justify-content: center;">
+                  <span class="material-symbols-outlined" style="font-size: 14px; color: var(--md-sys-color-primary);">schedule</span> 100% Fitness
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bento Grid Feature Showcase -->
+      <section style="margin-top: 48px;">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto 36px;">
+          <h2 style="font: var(--md-sys-typescale-headline-medium); font-weight: 800; letter-spacing: -0.02em;">
+            Designed for Modern Academic Administration
+          </h2>
+          <p style="font: var(--md-sys-typescale-body-large); color: var(--md-sys-color-on-surface-variant); margin-top: 8px;">
+            Engineered with Material 3 Expressive aesthetics to provide departments with frictionless timetable generation, editing, and official publishing.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card bento-card--highlight">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">meeting_room</span>
+            </div>
+            <h3 class="bento-title">Intelligent Venue & Lab Allocation</h3>
+            <p class="bento-desc">
+              Automatic differentiation between standard Lecture Halls, Computer Laboratories, and Seminar Halls. Practical courses are strictly routed to equipped venues with capacity enforcement.
+            </p>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">person_pin</span>
+            </div>
+            <h3 class="bento-title">Faculty Workload & Idle Gap Minimization</h3>
+            <p class="bento-desc">
+              Soft-constraint optimization protects professors from back-to-back fatigue while eliminating fragmented 3-hour idle waiting periods during teaching days.
+            </p>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">view_day</span>
+            </div>
+            <h3 class="bento-title">Batch-Wise Day Spotlight</h3>
+            <p class="bento-desc">
+              Focus immediately on today's lecture roster for any student cohort or filter by individual course code before diving into the complete weekly grid.
+            </p>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">swap_calls</span>
+            </div>
+            <h3 class="bento-title">Interactive Zero-Conflict Slot Swapping</h3>
+            <p class="bento-desc">
+              Need to reschedule a lecture? Click any slot in the timetable to inspect valid candidate periods. The system prevents faculty or room clashes before confirming.
+            </p>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">print</span>
+            </div>
+            <h3 class="bento-title">Print-Ready Notice & CSV Export</h3>
+            <p class="bento-desc">
+              One-click export generates official clean black-and-white noticeboard printouts and complete CSV tables ready for university ERP ingestion.
+            </p>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">verified_user</span>
+            </div>
+            <h3 class="bento-title">Role-Based Academic Authentication</h3>
+            <p class="bento-desc">
+              Dedicated access control for Department Heads, Teaching Faculty, and Academic Deans with secure local sessions and demo test accounts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Institutional Footer Info -->
+      <footer style="margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--md-sys-color-outline-variant); display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 16px;">
+        <div>
+          <div style="font-weight: 700; font-size: 14px; color: var(--md-sys-color-on-surface);">XYZ University • Academic Operations System</div>
+          <div style="font-size: 12px; color: var(--md-sys-color-outline); margin-top: 2px;">Department of Computer Science & Engineering | Academic Year 2026–2027</div>
+        </div>
+        <div style="display: flex; gap: 12px;">
+          <button class="md-btn md-btn--text" data-route="about">About</button>
+          <button class="md-btn md-btn--text" data-route="login">Sign In</button>
+          <button class="md-btn md-btn--text" data-route="register">Register</button>
+          <button class="md-btn md-btn--filled" data-route="dashboard">Launch Workspace</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       PAGE 2: ABOUT PAGE
+       ======================================================================= -->
+  <div class="app-page" id="page-about">
+    <div class="public-page-view">
+      <div style="max-width: 860px; margin: 0 auto;">
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 48px;">
+          <div class="hero-pill-badge" style="margin-bottom: 12px;">
+            <span class="material-symbols-outlined" style="font-size: 16px;">info</span>
+            <span>About The Project</span>
+          </div>
+          <h1 style="font: var(--md-sys-typescale-display-small); font-weight: 800; letter-spacing: -0.02em;">
+            AI-Based Timetable Preparation System
+          </h1>
+          <p style="font: var(--md-sys-typescale-body-large); color: var(--md-sys-color-on-surface-variant); margin-top: 12px; line-height: 1.6;">
+            A state-of-the-art academic scheduling workstation solving the combinatorial NP-hard problem of university class coordination with Material 3 Expressive ergonomics.
+          </p>
+        </div>
+
+        <!-- Section 1: The Problem -->
+        <div class="bento-card" style="margin-bottom: 24px; padding: 32px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">troubleshoot</span>
+            </div>
+            <div>
+              <h2 style="font: var(--md-sys-typescale-title-large); font-weight: 700;">The Academic Scheduling Challenge</h2>
+              <span style="font-size: 12px; color: var(--md-sys-color-primary); font-weight: 600;">NP-Hard Combinatorial Optimization</span>
+            </div>
+          </div>
+          <p style="font: var(--md-sys-typescale-body-medium); color: var(--md-sys-color-on-surface-variant); line-height: 1.7;">
+            In traditional university departments, creating a weekly timetable requires manually juggling hundreds of interdependent variables. Class cohorts cannot have overlapping sessions, instructors cannot be in two lecture halls simultaneously, specialized lab equipment is limited, and faculty workloads must stay within accredited limits without exhausting consecutive hours.
+          </p>
+          <p style="font: var(--md-sys-typescale-body-medium); color: var(--md-sys-color-on-surface-variant); line-height: 1.7; margin-top: 12px;">
+            Manual preparation frequently causes classroom clashes, lab double-booking, and uneven teaching spreads that take weeks of administrative overhead to resolve.
+          </p>
+        </div>
+
+        <!-- Section 2: AI Constraint Solver -->
+        <div class="bento-card" style="margin-bottom: 24px; padding: 32px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">psychology</span>
+            </div>
+            <div>
+              <h2 style="font: var(--md-sys-typescale-title-large); font-weight: 700;">How the AI Engine Works</h2>
+              <span style="font-size: 12px; color: var(--md-sys-color-primary); font-weight: 600;">Constraint Satisfaction Problem (CSP) Heuristics</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 20px;">
+            <div style="background: var(--md-sys-color-surface-container-high); padding: 18px; border-radius: 16px;">
+              <div style="font-weight: 700; color: var(--md-sys-color-primary); font-size: 12px; margin-bottom: 6px;">PHASE 1: DOMAIN DEFINITION</div>
+              <div style="font-weight: 600; font-size: 14px; margin-bottom: 6px;">Variable & Slot Modeling</div>
+              <div style="font-size: 12px; color: var(--md-sys-color-on-surface-variant); line-height: 1.5;">
+                Every required lecture and lab session is modeled with valid period domains, instructor allocations, and room compatibilities.
+              </div>
+            </div>
+
+            <div style="background: var(--md-sys-color-surface-container-high); padding: 18px; border-radius: 16px;">
+              <div style="font-weight: 700; color: var(--md-sys-color-primary); font-size: 12px; margin-bottom: 6px;">PHASE 2: HARD CONSTRAINTS</div>
+              <div style="font-weight: 600; font-size: 14px; margin-bottom: 6px;">Forward Checking & MRV</div>
+              <div style="font-size: 12px; color: var(--md-sys-color-on-surface-variant); line-height: 1.5;">
+                Minimum Remaining Values (MRV) heuristic assigns high-constraint sessions first, enforcing zero overlaps for faculty, classes, and venues.
+              </div>
+            </div>
+
+            <div style="background: var(--md-sys-color-surface-container-high); padding: 18px; border-radius: 16px;">
+              <div style="font-weight: 700; color: var(--md-sys-color-primary); font-size: 12px; margin-bottom: 6px;">PHASE 3: VENUE MATCHING</div>
+              <div style="font-weight: 600; font-size: 14px; margin-bottom: 6px;">Room-Type Compatibility</div>
+              <div style="font-size: 12px; color: var(--md-sys-color-on-surface-variant); line-height: 1.5;">
+                Laboratory courses are strictly assigned to laboratory spaces, while theory courses reserve standard lecture halls.
+              </div>
+            </div>
+
+            <div style="background: var(--md-sys-color-surface-container-high); padding: 18px; border-radius: 16px;">
+              <div style="font-weight: 700; color: var(--md-sys-color-primary); font-size: 12px; margin-bottom: 6px;">PHASE 4: SOFT OPTIMIZATION</div>
+              <div style="font-weight: 600; font-size: 14px; margin-bottom: 6px;">Hill-Climbing Gap Reduction</div>
+              <div style="font-size: 12px; color: var(--md-sys-color-on-surface-variant); line-height: 1.5;">
+                Local stochastic search swaps non-conflicting slots to group lectures logically and eliminate awkward empty hours in faculty days.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Tech Specs -->
+        <div class="bento-card" style="margin-bottom: 36px; padding: 32px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div class="bento-icon-wrapper">
+              <span class="material-symbols-outlined">architecture</span>
+            </div>
+            <div>
+              <h2 style="font: var(--md-sys-typescale-title-large); font-weight: 700;">Architecture & Design Tokens</h2>
+              <span style="font-size: 12px; color: var(--md-sys-color-primary); font-weight: 600;">Material Design 3 Expressive & Pure Web Standards</span>
+            </div>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; margin-top: 16px;">
+            <li style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--md-sys-color-on-surface);">
+              <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary); font-size: 18px;">check_circle</span>
+              <strong>Material 3 Expressive UI:</strong> 28px corner radii, spring physics transitions, and high-contrast accessible color tokens.
+            </li>
+            <li style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--md-sys-color-on-surface);">
+              <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary); font-size: 18px;">check_circle</span>
+              <strong>Zero-Latency Execution:</strong> Runs completely client-side in standard JavaScript without external cloud compute dependencies.
+            </li>
+            <li style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--md-sys-color-on-surface);">
+              <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary); font-size: 18px;">check_circle</span>
+              <strong>Zero-Config Vercel Compatibility:</strong> Fully static, lightning-fast edge deployment ready for modern web delivery.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Call to Action -->
+        <div style="text-align: center; margin-bottom: 40px;">
+          <button class="md-btn md-btn--filled md-btn--expressive" data-route="dashboard" style="padding: 14px 36px; font-size: 15px;">
+            <span class="material-symbols-outlined">rocket_launch</span>
+            <span>Enter Timetable Workspace</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       PAGE 3: REGISTER PAGE
+       ======================================================================= -->
+  <div class="app-page" id="page-register">
+    <div class="public-page-view">
+      <div class="auth-container">
+        <div class="auth-card">
+          <div class="auth-header">
+            <div class="brand-icon" style="margin: 0 auto 12px; width: 48px; height: 48px;">
+              <span class="material-symbols-outlined" style="font-size: 26px;">person_add</span>
+            </div>
+            <h1 class="auth-title">Create Faculty Account</h1>
+            <p class="auth-subtitle">Register to access XYZ University Academic Workspace</p>
+          </div>
+
+          <div id="register-error-banner" style="display: none; background: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); padding: 10px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-bottom: 16px;"></div>
+
+          <form id="form-register">
+            <div class="form-group">
+              <label class="form-label" for="reg-name">Full Name (with Title)</label>
+              <input type="text" id="reg-name" class="form-input" placeholder="e.g. Dr. Jane Doe" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-email">Institutional Email</label>
+              <input type="email" id="reg-email" class="form-input" placeholder="name@xyz.edu" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-dept">Academic Department</label>
+              <select id="reg-dept" class="form-input" style="cursor: pointer;">
+                <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics & Communication">Electronics & Communication</option>
+                <option value="Electrical & Electronics">Electrical & Electronics</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Academic Role</label>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="reg-role-group">
+                <button type="button" class="demo-pill-btn active" data-role="Professor / Faculty">
+                  <span>Professor</span>
+                </button>
+                <button type="button" class="demo-pill-btn" data-role="HOD / Dept Head">
+                  <span>Department Head</span>
+                </button>
+                <button type="button" class="demo-pill-btn" data-role="Lab Assistant">
+                  <span>Lab Assistant</span>
+                </button>
+                <button type="button" class="demo-pill-btn" data-role="Academic Coordinator">
+                  <span>Coordinator</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-password">Password</label>
+              <input type="password" id="reg-password" class="form-input" placeholder="Create a strong password" required minlength="4">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-password-confirm">Confirm Password</label>
+              <input type="password" id="reg-password-confirm" class="form-input" placeholder="Re-enter your password" required minlength="4">
+            </div>
+
+            <button type="submit" class="md-btn md-btn--filled md-btn--expressive auth-btn" style="margin-top: 8px;">
+              <span class="material-symbols-outlined">how_to_reg</span>
+              <span>Register & Enter Workspace</span>
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            Already have an academic account?
+            <a class="auth-link" data-route="login" id="link-goto-login">Sign in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       PAGE 4: LOGIN PAGE
+       ======================================================================= -->
+  <div class="app-page" id="page-login">
+    <div class="public-page-view">
+      <div class="auth-container">
+        <div class="auth-card">
+          <div class="auth-header">
+            <div class="brand-icon" style="margin: 0 auto 12px; width: 48px; height: 48px;">
+              <span class="material-symbols-outlined" style="font-size: 26px;">lock_open</span>
+            </div>
+            <h1 class="auth-title">Welcome Back</h1>
+            <p class="auth-subtitle">Sign in to XYZ University Timetable Portal</p>
+          </div>
+
+          <div id="login-error-banner" style="display: none; background: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); padding: 10px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-bottom: 16px;"></div>
+
+          <!-- Quick 1-Click Demo Profiles -->
+          <div class="demo-profiles-container">
+            <div class="demo-profiles-title">
+              <span class="material-symbols-outlined" style="font-size: 16px; color: var(--md-sys-color-primary);">bolt</span>
+              <span>Quick 1-Click Demo Accounts</span>
+            </div>
+            <div class="demo-pill-group">
+              <button type="button" class="demo-pill-btn" id="demo-user-hod" title="Log in as HOD">
+                <span class="material-symbols-outlined" style="font-size: 16px;">badge</span>
+                <span>Dr. Aris (HOD)</span>
+              </button>
+              <button type="button" class="demo-pill-btn" id="demo-user-faculty" title="Log in as Professor">
+                <span class="material-symbols-outlined" style="font-size: 16px;">school</span>
+                <span>Dr. Priya (Faculty)</span>
+              </button>
+              <button type="button" class="demo-pill-btn" id="demo-user-dean" title="Log in as Dean">
+                <span class="material-symbols-outlined" style="font-size: 16px;">verified</span>
+                <span>Dean Academic</span>
+              </button>
+            </div>
+          </div>
+
+          <form id="form-login">
+            <div class="form-group">
+              <label class="form-label" for="login-email">University Email</label>
+              <input type="email" id="login-email" class="form-input" placeholder="admin@xyz.edu" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="login-password">Password</label>
+              <input type="password" id="login-password" class="form-input" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="md-btn md-btn--filled md-btn--expressive auth-btn">
+              <span class="material-symbols-outlined">login</span>
+              <span>Sign In to Workspace</span>
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            Don't have an academic account yet?
+            <a class="auth-link" data-route="register" id="link-goto-register">Register here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       PAGE 5: DASHBOARD / ACADEMIC WORKSTATION (AUTHENTICATED ONLY)
+       ======================================================================= -->
+  <div class="app-page" id="page-dashboard">
+    <div class="app-scaffold">
+    <!-- Desktop & Tablet MD3 Navigation Rail -->
+    <nav class="nav-rail" aria-label="Main Navigation">
+      <div class="nav-rail-header">
+        <div class="brand-icon" title="XYZ University Timetable AI">
+          <span class="material-symbols-outlined">auto_schedule</span>
+        </div>
+      </div>
+
+      <div class="nav-rail-items">
+        <button class="nav-item active" data-tab="timetable" id="nav-timetable" title="Timetable Grid">
+          <div class="nav-indicator">
+            <span class="material-symbols-outlined">calendar_month</span>
+          </div>
+          <span>Timetable</span>
+        </button>
+
+        <button class="nav-item" data-tab="assignments" id="nav-assignments" title="Assign Classes & Staff">
+          <div class="nav-indicator">
+            <span class="material-symbols-outlined">assignment_ind</span>
+          </div>
+          <span>Batch Plan</span>
+        </button>
+
+        <button class="nav-item" data-tab="fullscreen" id="nav-fullscreen" title="Fullscreen Presentation View">
+          <div class="nav-indicator">
+            <span class="material-symbols-outlined">fullscreen</span>
+          </div>
+          <span>Preview</span>
+        </button>
+
+        <button class="nav-item" data-tab="ai" id="nav-ai" title="AI Solver">
+          <div class="nav-indicator">
+            <span class="material-symbols-outlined">psychology</span>
+          </div>
+          <span>AI Engine</span>
+        </button>
+
+        <button class="nav-item" data-tab="data" id="nav-data" title="College Variables">
+          <div class="nav-indicator">
+            <span class="material-symbols-outlined">account_balance</span>
+          </div>
+          <span>Data</span>
+        </button>
+
+        <button class="nav-item" data-tab="conflicts" id="nav-conflicts" title="Conflict Diagnostics">
+          <div class="nav-indicator">
+            <span class="material-symbols-outlined">troubleshoot</span>
+          </div>
+          <span>Audits</span>
+        </button>
+      </div>
+
+      <div class="nav-rail-footer">
+        <button class="md-icon-btn theme-toggle-btn" id="theme-toggle" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content Workspace -->
+    <div class="main-wrapper">
+      <!-- Top App Bar -->
+      <header class="top-app-bar">
+        <div class="app-title-group">
+          <div>
+            <h1 id="college-header-title">XYZ University</h1>
+            <span class="app-subtitle-pill">
+              <span class="material-symbols-outlined" style="font-size: 14px;">verified</span>
+              AI Academic Scheduler v2.4
+            </span>
+          </div>
+        </div>
+
+        <div class="top-bar-actions">
+          <button class="md-btn md-btn--outlined" id="btn-portal-home" title="Return to Portal Overview">
+            <span class="material-symbols-outlined">home</span>
+            <span>Portal Home</span>
+          </button>
+
+          <button class="md-btn md-btn--tonal" id="btn-print" title="Print Academic Notice Sheet">
+            <span class="material-symbols-outlined">print</span>
+            <span>Print View</span>
+          </button>
+
+          <button class="md-btn md-btn--filled" id="btn-run-ai-quick">
+            <span class="material-symbols-outlined">bolt</span>
+            <span>Auto-Generate AI</span>
+          </button>
+
+          <div class="user-profile-badge" id="dashboard-user-badge">
+            <div class="user-avatar-pill" id="dashboard-user-avatar">AT</div>
+            <div class="user-profile-text">
+              <span class="user-profile-name" id="dashboard-user-name">Dr. Aris Thorne</span>
+              <span class="user-profile-role" id="dashboard-user-role">HOD & Professor</span>
+            </div>
+            <button class="md-icon-btn" id="btn-logout" title="Sign Out" aria-label="Sign Out" style="margin-left: 4px; width: 32px; height: 32px;">
+              <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Main Container -->
+      <main class="page-container">
+
+        <!-- ===================================================================
+             TAB 1: TIMETABLE VIEW
+             =================================================================== -->
+        <section id="section-timetable" class="view-section">
+          <!-- Print-Only Official Document Header -->
+          <div class="print-header">
+            <h2 id="print-college-name">XYZ University</h2>
+            <p id="print-dept-info">Department of Computer Science & Engineering | Academic Year 2026-2027</p>
+            <p id="print-view-target" style="font-weight: bold; margin-top: 5px;">Class Schedule</p>
+          </div>
+
+          <!-- Controls Bar -->
+          <div class="timetable-controls-bar">
+            <div class="timetable-filters">
+              <div class="chip-group" role="group" aria-label="Filter View Mode">
+                <button class="md-chip active" data-view="class" id="chip-view-class">
+                  <span class="material-symbols-outlined">school</span> By Class
+                </button>
+                <button class="md-chip" data-view="faculty" id="chip-view-faculty">
+                  <span class="material-symbols-outlined">person</span> By Faculty
+                </button>
+                <button class="md-chip" data-view="room" id="chip-view-room">
+                  <span class="material-symbols-outlined">meeting_room</span> By Room
+                </button>
+              </div>
+
+              <!-- Selector Dropdown -->
+              <div style="min-width: 200px;">
+                <select class="md-select" id="timetable-filter-select" aria-label="Select Target Entity">
+                  <!-- Populated via JS -->
+                </select>
+              </div>
+
+              <!-- Day Filter Dropdown -->
+              <div style="min-width: 140px;">
+                <select class="md-select" id="timetable-day-filter" aria-label="Filter by Day" title="Filter Schedule by Day">
+                  <option value="ALL">📅 All Days</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                </select>
+              </div>
+
+              <!-- Course Filter Dropdown -->
+              <div style="min-width: 170px;">
+                <select class="md-select" id="timetable-course-filter" aria-label="Filter by Course" title="Filter Schedule by Course">
+                  <option value="ALL">📚 All Courses</option>
+                  <!-- Populated via JS -->
+                </select>
+              </div>
+            </div>
+
+            <!-- Export and Helper Actions -->
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <button class="md-btn md-btn--outlined" id="btn-export-csv" title="Export CSV for ERP">
+                <span class="material-symbols-outlined">download</span> Export CSV
+              </button>
+              <button class="md-btn md-btn--outlined" id="btn-export-json" title="Save Backup JSON">
+                <span class="material-symbols-outlined">save</span> Backup
+              </button>
+            </div>
+          </div>
+
+          <!-- Swap Guide Banner (Appears when user selects a slot) -->
+          <div id="swap-guide-banner" style="display: none; background-color: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); padding: 10px 16px; border-radius: var(--md-sys-shape-corner-small); margin-bottom: 12px; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 8px; font-weight: 500;">
+              <span class="material-symbols-outlined">swap_horiz</span>
+              <span id="swap-banner-text">Slot selected. Click any other slot to swap or move periods.</span>
+            </div>
+            <button class="md-btn md-btn--text" id="btn-cancel-swap" style="height: 32px;">Cancel</button>
+          </div>
+
+          <!-- Timetable Grid -->
+          <div class="timetable-grid-wrapper" id="timetable-container">
+            <table class="timetable-table" id="timetable-table">
+              <!-- Dynamically rendered -->
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             TAB 2: AI ENGINE & OPTIMIZATION
+             =================================================================== -->
+        <section id="section-ai" class="view-section" style="display: none;">
+          <!-- Top Metric Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-wrapper primary">
+                <span class="material-symbols-outlined">fitness_center</span>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value" id="stat-fitness">98%</div>
+                <div class="stat-label">AI Fitness Score</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrapper success">
+                <span class="material-symbols-outlined">check_circle</span>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value" id="stat-conflicts">0 Clashes</div>
+                <div class="stat-label">Hard Constraint State</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrapper tertiary">
+                <span class="material-symbols-outlined">science</span>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value" id="stat-labs">100%</div>
+                <div class="stat-label">Lab Block Integrity</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrapper warning">
+                <span class="material-symbols-outlined">door_front</span>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value" id="stat-utilization">84%</div>
+                <div class="stat-label">Room Capacity Usage</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solver Control Box -->
+          <div class="ai-solver-card">
+            <div class="ai-solver-header">
+              <div>
+                <h2 style="font: var(--md-sys-typescale-headline-small); color: var(--md-sys-color-on-surface);">
+                  Heuristic Constraint Satisfaction Engine
+                </h2>
+                <p style="font: var(--md-sys-typescale-body-medium); color: var(--md-sys-color-on-surface-variant); margin-top: 4px;">
+                  Schedules theory and continuous 2-hour lab sessions without teacher overlaps, room collisions, or section clashes.
+                </p>
+              </div>
+
+              <button class="md-btn md-btn--filled" id="btn-start-ai" style="height: 48px; font-size: 15px;">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <span>Run Timetable Generation</span>
+              </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-track" id="solver-progress-track">
+              <div class="progress-fill" id="solver-progress-fill"></div>
+            </div>
+
+            <!-- Terminal Output -->
+            <div class="solver-terminal" id="solver-terminal">
+              <!-- Logs injected here -->
+            </div>
+
+            <!-- Constraint Checklist -->
+            <h3 style="font: var(--md-sys-typescale-title-medium); margin: 20px 0 10px;">Active Constraints & Rules</h3>
+            <div class="constraint-grid">
+              <div class="constraint-item">
+                <span class="material-symbols-outlined">verified</span>
+                <div class="constraint-text">
+                  <h4>Faculty Non-Collision</h4>
+                  <p>No professor is booked for multiple sections simultaneously.</p>
+                </div>
+              </div>
+
+              <div class="constraint-item">
+                <span class="material-symbols-outlined">verified</span>
+                <div class="constraint-text">
+                  <h4>Continuous Laboratory Blocks</h4>
+                  <p>Practical labs are assigned 2 consecutive periods in designated labs.</p>
+                </div>
+              </div>
+
+              <div class="constraint-item">
+                <span class="material-symbols-outlined">verified</span>
+                <div class="constraint-text">
+                  <h4>Dedicated Break Windows</h4>
+                  <p>Common lunch break (11:50 - 12:40) strictly reserved across all years.</p>
+                </div>
+              </div>
+
+              <div class="constraint-item">
+                <span class="material-symbols-outlined">verified</span>
+                <div class="constraint-text">
+                  <h4>Faculty Availability & Load</h4>
+                  <p>Individual off-slots and weekly teaching hour caps enforced.</p>
+                </div>
+              </div>
+
+              <div class="constraint-item">
+                <span class="material-symbols-outlined">verified</span>
+                <div class="constraint-text">
+                  <h4>Classroom Exclusivity</h4>
+                  <p>Rooms and labs host only one active cohort at any period.</p>
+                </div>
+              </div>
+
+              <div class="constraint-item">
+                <span class="material-symbols-outlined">verified</span>
+                <div class="constraint-text">
+                  <h4>Weekly Subject Spread</h4>
+                  <p>Theory sessions distributed evenly to prevent student fatigue.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             TAB 3: COLLEGE DATA & VARIABLES
+             =================================================================== -->
+        <section id="section-data" class="view-section" style="display: none;">
+          <div class="md3-tabs" role="tablist">
+            <button class="md3-tab active" data-datatab="classes" id="dtab-classes">
+              <span class="material-symbols-outlined">groups</span> Classes & Sections
+            </button>
+            <button class="md3-tab" data-datatab="faculty" id="dtab-faculty">
+              <span class="material-symbols-outlined">badge</span> Faculty Profiles
+            </button>
+            <button class="md3-tab" data-datatab="courses" id="dtab-courses">
+              <span class="material-symbols-outlined">menu_book</span> Courses & Labs
+            </button>
+            <button class="md3-tab" data-datatab="rooms" id="dtab-rooms">
+              <span class="material-symbols-outlined">meeting_room</span> Classrooms & Labs
+            </button>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <p style="font: var(--md-sys-typescale-body-medium); color: var(--md-sys-color-on-surface-variant);">
+              Configure college academic variables. Changes will take effect in the next AI generation run.
+            </p>
+            <button class="md-btn md-btn--tonal" id="btn-reset-data">
+              <span class="material-symbols-outlined">restart_alt</span> Reset to Sample Data
+            </button>
+          </div>
+
+          <!-- Data Tables Container -->
+          <div class="data-table-wrapper" id="data-tables-container">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             TAB: BATCH & STAFF ASSIGNMENT PLANNER (USER INPUT SCREEN)
+             =================================================================== -->
+        <section id="section-assignments" class="view-section" style="display: none;">
+          <!-- Action Bar with Immediate AI Trigger -->
+          <div class="planner-action-bar">
+            <div>
+              <h2 style="font: var(--md-sys-typescale-title-large); color: var(--md-sys-color-on-primary-container);">
+                Batch & Staff Curriculum Planner
+              </h2>
+              <p style="font: var(--md-sys-typescale-body-medium); color: var(--md-sys-color-on-surface-variant); margin-top: 2px;">
+                Define which classes/labs run for which student batches and allocate teaching faculty.
+              </p>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="badge badge--theory" id="planner-stats-badge" style="padding: 6px 12px; font-size: 13px;">
+                24 Total Class Units Assigned
+              </span>
+              <button class="md-btn md-btn--filled" id="btn-generate-from-plan" style="height: 44px;">
+                <span class="material-symbols-outlined">auto_awesome</span>
+                <span>Generate Timetable From This Plan</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Planner Workspace Grid -->
+          <div class="planner-grid">
+            <!-- Left Column: Assignment Data Entry Card -->
+            <div class="md-card md-card--elevated" style="padding: var(--md-spacing-lg);">
+              <h3 style="font: var(--md-sys-typescale-title-medium); color: var(--md-sys-color-on-surface); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">post_add</span>
+                Assign Course to Batch
+              </h3>
+
+              <form id="form-add-assignment" style="display: flex; flex-direction: column; gap: 14px;">
+                <!-- Target Batch / Section -->
+                <div class="input-group">
+                  <label class="input-label" for="assign-batch-select">Student Batch / Class Section</label>
+                  <select class="md-select" id="assign-batch-select" required>
+                    <!-- Injected dynamically -->
+                  </select>
+                </div>
+
+                <!-- Hidden Input for Custom Batch Creation -->
+                <div class="input-group" id="group-custom-batch" style="display: none;">
+                  <label class="input-label" for="custom-batch-name">New Batch Name & ID</label>
+                  <input type="text" class="md-input" id="custom-batch-name" placeholder="e.g. MECH-3A (Mechanical Sem 3)">
+                </div>
+
+                <!-- Course Code & Title -->
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px;">
+                  <div class="input-group">
+                    <label class="input-label" for="assign-course-code">Course Code</label>
+                    <input type="text" class="md-input" id="assign-course-code" placeholder="CS308" required>
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label" for="assign-course-title">Subject Title</label>
+                    <input type="text" class="md-input" id="assign-course-title" placeholder="Cyber Security & Defense" required>
+                  </div>
+                </div>
+
+                <!-- Assigned Staff / Faculty -->
+                <div class="input-group">
+                  <label class="input-label" for="assign-faculty-select">Assigned Staff / Faculty Member</label>
+                  <select class="md-select" id="assign-faculty-select" required>
+                    <!-- Injected dynamically -->
+                  </select>
+                </div>
+
+                <!-- Hidden Input for Custom Faculty Creation -->
+                <div class="input-group" id="group-custom-faculty" style="display: none;">
+                  <label class="input-label" for="custom-faculty-name">New Faculty Name & Designation</label>
+                  <input type="text" class="md-input" id="custom-faculty-name" placeholder="e.g. Dr. Sanjay Verma (Associate Professor)">
+                </div>
+
+                <!-- Class Type & Weekly Hours -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                  <div class="input-group">
+                    <label class="input-label" for="assign-type-select">Class Type</label>
+                    <select class="md-select" id="assign-type-select">
+                      <option value="Theory">Theory Lecture (1-hr slots)</option>
+                      <option value="Lab">Practical Lab (2-hr block)</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group">
+                    <label class="input-label" for="assign-hours-input">Hours / Week</label>
+                    <input type="number" class="md-input" id="assign-hours-input" min="1" max="8" value="4" required>
+                  </div>
+                </div>
+
+                <!-- Room / Lab Allocation -->
+                <div class="input-group">
+                  <label class="input-label" for="assign-room-select">Room / Lab Facility</label>
+                  <select class="md-select" id="assign-room-select">
+                    <!-- Injected dynamically -->
+                  </select>
+                </div>
+
+                <!-- Hidden Input for Custom Room Creation -->
+                <div class="input-group" id="group-custom-room" style="display: none;">
+                  <label class="input-label" for="custom-room-id">New Facility Details: Room No., Type & Capacity</label>
+                  <div style="display: grid; grid-template-columns: 1.5fr 1.3fr 1fr; gap: 8px;">
+                    <input type="text" class="md-input" id="custom-room-id" placeholder="e.g. LH-301 or IoT-Lab-2">
+                    <select class="md-select" id="custom-room-type" title="Facility Type">
+                      <option value="Lecture">Lecture Hall</option>
+                      <option value="Lab">Practical Lab</option>
+                      <option value="Seminar">Seminar Hall</option>
+                      <option value="Tutorial">Tutorial Room</option>
+                    </select>
+                    <input type="number" class="md-input" id="custom-room-capacity" placeholder="Seats (e.g. 60)" min="10" max="300" value="60">
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="md-btn md-btn--filled" style="margin-top: 8px; width: 100%; height: 46px;">
+                  <span class="material-symbols-outlined">add_task</span>
+                  <span>Add Class & Staff Assignment</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Right Column: Current Batches Roster Grid -->
+            <div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                <h3 style="font: var(--md-sys-typescale-title-medium); color: var(--md-sys-color-on-surface);">
+                  Current Curriculum Assignments by Batch
+                </h3>
+                <span style="font: var(--md-sys-typescale-body-small); color: var(--md-sys-color-on-surface-variant);">
+                  Tip: Changes are automatically saved & ready for the AI engine.
+                </span>
+              </div>
+
+              <!-- Roster Container -->
+              <div class="batch-card-grid" id="batch-roster-container">
+                <!-- Injected dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             TAB: FULLSCREEN PRESENTATION & PREVIEW SCREEN
+             =================================================================== -->
+        <section id="section-fullscreen" class="view-section" style="display: none;">
+          <div class="fullscreen-presentation">
+            <!-- Presentation Toolbar -->
+            <div class="presentation-toolbar">
+              <div class="presentation-info">
+                <div class="brand-icon" style="width: 40px; height: 40px;">
+                  <span class="material-symbols-outlined" style="font-size: 22px;">tv</span>
+                </div>
+                <div>
+                  <h2 style="font: var(--md-sys-typescale-title-medium); color: var(--md-sys-color-on-surface);" id="display-univ-title">
+                    XYZ University - Master Academic Schedule
+                  </h2>
+                  <div style="font-size: 12px; color: var(--md-sys-color-on-surface-variant);" id="display-univ-sub">
+                    Department of Computer Science & Engineering • Academic Session 2026-2027
+                  </div>
+                </div>
+                <div class="presentation-clock" id="presentation-live-clock">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">schedule</span>
+                  <span id="live-clock-text">--:--:--</span>
+                </div>
+              </div>
+
+              <div class="presentation-actions">
+                <!-- Batch Selector Dropdown -->
+                <div style="min-width: 260px;">
+                  <select class="md-select" id="fullscreen-batch-select" style="height: 38px; padding: 0 12px; font-size: 13px; background-color: var(--md-sys-color-surface-container-lowest);" aria-label="Select Batch to Display">
+                    <!-- Populated dynamically -->
+                  </select>
+                </div>
+
+                <!-- Scale Mode Toggle -->
+                <button class="md-btn md-btn--tonal" id="btn-toggle-font-scale" style="height: 36px; padding: 0 12px;">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">format_size</span>
+                  <span id="font-scale-text">Large Display</span>
+                </button>
+
+                <!-- Native Fullscreen Trigger -->
+                <button class="md-btn md-btn--filled" id="btn-native-fullscreen" style="height: 36px; padding: 0 14px;">
+                  <span class="material-symbols-outlined" style="font-size: 18px;" id="fullscreen-icon">fullscreen</span>
+                  <span id="fullscreen-btn-label">Fullscreen Mode</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Fullscreen Board Container -->
+            <div class="presentation-board" id="presentation-board-wrapper">
+              <!-- Prominent Day Spotlight Section: shows selected day's timetable first -->
+              <div id="preview-day-spotlight" class="preview-day-spotlight">
+                <!-- Injected dynamically: Day switcher tabs, Day course filter, Period-by-period spotlight cards -->
+              </div>
+
+              <!-- Full Weekly Master Timetable: shown after the day's timetable -->
+              <div class="preview-weekly-section">
+                <div class="preview-weekly-header">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary); font-size: 22px;">calendar_month</span>
+                    <h3 id="preview-weekly-title" style="font: var(--md-sys-typescale-title-medium); color: var(--md-sys-color-on-surface); margin: 0; font-weight: 700;">
+                      Full Weekly Master Schedule
+                    </h3>
+                  </div>
+                  <span class="app-subtitle-pill" style="font-size: 11px;">Complete 5-Day Roster</span>
+                </div>
+                <div class="timetable-grid-wrapper" style="box-shadow: none; border-radius: 0; border: none;">
+                  <table class="timetable-table" id="fullscreen-timetable-table">
+                    <!-- Injected dynamically -->
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             TAB 4: CONFLICT & AUDIT INSPECTOR
+             =================================================================== -->
+        <section id="section-conflicts" class="view-section" style="display: none;">
+          <div class="md-card md-card--elevated" style="padding: var(--md-spacing-lg);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <div>
+                <h2 style="font: var(--md-sys-typescale-headline-small); color: var(--md-sys-color-on-surface);">
+                  Real-time Schedule Conflict Audit
+                </h2>
+                <p style="font: var(--md-sys-typescale-body-medium); color: var(--md-sys-color-on-surface-variant); margin-top: 4px;">
+                  Validates whether any faculty, room, or student section has been double-booked or violated constraints.
+                </p>
+              </div>
+              <span class="badge badge--success" id="conflict-audit-badge" style="font-size: 13px; padding: 6px 12px;">
+                0 Detected Violations
+              </span>
+            </div>
+
+            <div id="conflicts-list-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar (<600px) -->
+    <nav class="bottom-nav-bar" aria-label="Mobile Navigation">
+      <button class="nav-item active" data-tab="timetable" id="bnav-timetable">
+        <div class="nav-indicator">
+          <span class="material-symbols-outlined">calendar_month</span>
+        </div>
+        <span>Timetable</span>
+      </button>
+
+      <button class="nav-item" data-tab="assignments" id="bnav-assignments">
+        <div class="nav-indicator">
+          <span class="material-symbols-outlined">assignment_ind</span>
+        </div>
+        <span>Batch Plan</span>
+      </button>
+
+      <button class="nav-item" data-tab="fullscreen" id="bnav-fullscreen">
+        <div class="nav-indicator">
+          <span class="material-symbols-outlined">fullscreen</span>
+        </div>
+        <span>Preview</span>
+      </button>
+
+      <button class="nav-item" data-tab="ai" id="bnav-ai">
+        <div class="nav-indicator">
+          <span class="material-symbols-outlined">psychology</span>
+        </div>
+        <span>AI Solver</span>
+      </button>
+
+      <button class="nav-item" data-tab="data" id="bnav-data">
+        <div class="nav-indicator">
+          <span class="material-symbols-outlined">account_balance</span>
+        </div>
+        <span>Data</span>
+      </button>
+
+      <button class="nav-item" data-tab="conflicts" id="bnav-conflicts">
+        <div class="nav-indicator">
+          <span class="material-symbols-outlined">troubleshoot</span>
+        </div>
+        <span>Audits</span>
+      </button>
+    </nav>
+  </div> <!-- /.app-scaffold -->
+</div> <!-- /#page-dashboard -->
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Modal Dialog for Slot Details -->
+  <div class="modal-scrim" id="slot-modal-scrim">
+    <div class="md-dialog" role="dialog" aria-labelledby="modal-slot-title">
+      <div class="md-dialog__header">
+        <h3 class="md-dialog__title" id="modal-slot-title">Slot Details</h3>
+        <button class="md-icon-btn" id="modal-slot-close" aria-label="Close Dialog">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="md-dialog__content" id="modal-slot-body">
+        <!-- Injected details -->
+      </div>
+      <div class="md-dialog__actions">
+        <button class="md-btn md-btn--tonal" id="modal-slot-swap-btn">
+          <span class="material-symbols-outlined">swap_horiz</span> Swap / Move Slot
+        </button>
+        <button class="md-btn md-btn--filled" id="modal-slot-ok">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Entry -->
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+</html>

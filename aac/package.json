@@ -1,0 +1,16 @@
+{
+  "name": "aac-ai-timetable-scheduler",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AI-Based Time Table Preparation for College Management with Material Design 3",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node test-scheduler.mjs && node test-multipage-auth.mjs"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

@@ -1,0 +1,194 @@
+/* Material Design 3 Design Tokens */
+
+:root {
+  /* ==========================================================================
+     COLOR SYSTEM (Light Mode - Seed: Deep Academic Indigo #1A56DB)
+     ========================================================================== */
+  --md-sys-color-primary: #1A56DB;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-primary-container: #DBEAFE;
+  --md-sys-color-on-primary-container: #1E3A8A;
+
+  --md-sys-color-secondary: #475569;
+  --md-sys-color-on-secondary: #FFFFFF;
+  --md-sys-color-secondary-container: #E2E8F0;
+  --md-sys-color-on-secondary-container: #1E293B;
+
+  --md-sys-color-tertiary: #0D9488;
+  --md-sys-color-on-tertiary: #FFFFFF;
+  --md-sys-color-tertiary-container: #CCFBF1;
+  --md-sys-color-on-tertiary-container: #115E59;
+
+  --md-sys-color-error: #BA1A1A;
+  --md-sys-color-on-error: #FFFFFF;
+  --md-sys-color-error-container: #FFDAD6;
+  --md-sys-color-on-error-container: #410002;
+
+  --md-sys-color-surface: #F8FAFC;
+  --md-sys-color-on-surface: #0F172A;
+  --md-sys-color-surface-variant: #E2E8F0;
+  --md-sys-color-on-surface-variant: #475569;
+
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low: #F1F5F9;
+  --md-sys-color-surface-container: #E8EEF5;
+  --md-sys-color-surface-container-high: #E2E8F0;
+  --md-sys-color-surface-container-highest: #CBD5E1;
+
+  --md-sys-color-surface-dim: #DDE3EA;
+  --md-sys-color-surface-bright: #F8FAFC;
+
+  --md-sys-color-outline: #94A3B8;
+  --md-sys-color-outline-variant: #CBD5E1;
+
+  --md-sys-color-inverse-surface: #1E293B;
+  --md-sys-color-inverse-on-surface: #F8FAFC;
+  --md-sys-color-inverse-primary: #93C5FD;
+
+  /* Custom Academic Semantic Status Tokens */
+  --md-sys-color-success: #16A34A;
+  --md-sys-color-on-success: #FFFFFF;
+  --md-sys-color-success-container: #DCFCE7;
+  --md-sys-color-on-success-container: #14532D;
+
+  --md-sys-color-warning: #D97706;
+  --md-sys-color-on-warning: #FFFFFF;
+  --md-sys-color-warning-container: #FEF3C7;
+  --md-sys-color-on-warning-container: #78350F;
+
+  /* ==========================================================================
+     SHAPE TOKENS (Corner Radii)
+     ========================================================================== */
+  --md-sys-shape-corner-none: 0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+
+  /* ==========================================================================
+     SPACING TOKENS (8dp Base System)
+     ========================================================================== */
+  --md-spacing-xxs: 4px;
+  --md-spacing-xs: 8px;
+  --md-spacing-sm: 12px;
+  --md-spacing-md: 16px;
+  --md-spacing-lg: 24px;
+  --md-spacing-xl: 32px;
+  --md-spacing-xxl: 48px;
+
+  /* ==========================================================================
+     TYPOGRAPHY SCALE (Roboto Flex default)
+     ========================================================================== */
+  --md-ref-typeface-brand: 'Roboto Flex', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --md-ref-typeface-plain: 'Roboto Flex', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Display */
+  --md-sys-typescale-display-large: 400 57px/64px var(--md-ref-typeface-brand);
+  --md-sys-typescale-display-medium: 400 45px/52px var(--md-ref-typeface-brand);
+  --md-sys-typescale-display-small: 400 36px/44px var(--md-ref-typeface-brand);
+
+  /* Headline */
+  --md-sys-typescale-headline-large: 600 32px/40px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-medium: 600 28px/36px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-small: 600 24px/32px var(--md-ref-typeface-brand);
+
+  /* Title */
+  --md-sys-typescale-title-large: 600 22px/28px var(--md-ref-typeface-brand);
+  --md-sys-typescale-title-medium: 600 16px/24px var(--md-ref-typeface-brand);
+  --md-sys-typescale-title-small: 600 14px/20px var(--md-ref-typeface-brand);
+
+  /* Body */
+  --md-sys-typescale-body-large: 400 16px/24px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-medium: 400 14px/20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-small: 400 12px/16px var(--md-ref-typeface-plain);
+
+  /* Label */
+  --md-sys-typescale-label-large: 500 14px/20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-medium: 500 12px/16px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-small: 500 11px/16px var(--md-ref-typeface-plain);
+
+  /* ==========================================================================
+     ELEVATION (Tonal + Subtle Boundary Ambient)
+     ========================================================================== */
+  --md-sys-elevation-0: none;
+  --md-sys-elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.08), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  --md-sys-elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  --md-sys-elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.12), 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+  --md-sys-elevation-4: 0px 6px 10px 4px rgba(0, 0, 0, 0.14), 0px 2px 3px 0px rgba(0, 0, 0, 0.10);
+  --md-sys-elevation-5: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.12);
+
+  /* ==========================================================================
+     MATERIAL 3 EXPRESSIVE TOKENS
+     ========================================================================== */
+  --md-sys-motion-easing-expressive: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --md-sys-motion-easing-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  --md-sys-gradient-primary: linear-gradient(135deg, #1A56DB 0%, #7C3AED 100%);
+  --md-sys-gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #1A56DB 100%);
+  --md-sys-gradient-accent: linear-gradient(135deg, #0D9488 0%, #0284C7 100%);
+  --md-sys-gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.7) 100%);
+  --md-sys-glow-primary: 0 0 24px rgba(26, 86, 219, 0.25);
+  --md-sys-glow-accent: 0 0 24px rgba(124, 58, 237, 0.25);
+}
+
+/* ==========================================================================
+   DARK THEME PALETTE
+   ========================================================================== */
+[data-theme="dark"] {
+  --md-sys-color-primary: #A8C7FA;
+  --md-sys-color-on-primary: #08286A;
+  --md-sys-color-primary-container: #1C3D82;
+  --md-sys-color-on-primary-container: #D3E3FD;
+
+  --md-sys-color-secondary: #C2C7D0;
+  --md-sys-color-on-secondary: #2C3139;
+  --md-sys-color-secondary-container: #414750;
+  --md-sys-color-on-secondary-container: #DEE3EB;
+
+  --md-sys-color-tertiary: #5EEAD4;
+  --md-sys-color-on-tertiary: #003731;
+  --md-sys-color-tertiary-container: #134E4A;
+  --md-sys-color-on-tertiary-container: #CCFBF1;
+
+  --md-sys-color-error: #F2B8B5;
+  --md-sys-color-on-error: #601410;
+  --md-sys-color-error-container: #8C1D18;
+  --md-sys-color-on-error-container: #F9DEDC;
+
+  --md-sys-color-surface: #0F172A;
+  --md-sys-color-on-surface: #E2E8F0;
+  --md-sys-color-surface-variant: #1E293B;
+  --md-sys-color-on-surface-variant: #94A3B8;
+
+  --md-sys-color-surface-container-lowest: #090D16;
+  --md-sys-color-surface-container-low: #131E33;
+  --md-sys-color-surface-container: #1E293B;
+  --md-sys-color-surface-container-high: #27354D;
+  --md-sys-color-surface-container-highest: #334155;
+
+  --md-sys-color-surface-dim: #0F172A;
+  --md-sys-color-surface-bright: #2C3B53;
+
+  --md-sys-color-outline: #64748B;
+  --md-sys-color-outline-variant: #334155;
+
+  --md-sys-color-inverse-surface: #E2E8F0;
+  --md-sys-color-inverse-on-surface: #0F172A;
+  --md-sys-color-inverse-primary: #1A56DB;
+
+  --md-sys-color-success: #4ADE80;
+  --md-sys-color-on-success: #052E16;
+  --md-sys-color-success-container: #14532D;
+  --md-sys-color-on-success-container: #DCFCE7;
+
+  --md-sys-color-warning: #FBBF24;
+  --md-sys-color-on-warning: #451A03;
+  --md-sys-color-warning-container: #78350F;
+  --md-sys-color-on-warning-container: #FEF3C7;
+
+  --md-sys-elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.4), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.5), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.6), 0px 1px 3px 0px rgba(0, 0, 0, 0.4);
+}
