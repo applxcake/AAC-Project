@@ -13,7 +13,7 @@ def floorDivd(x,y):
 def square(x,y):
     return x**y
 
-#1) Manual print using direct functiln calls
+#1) Manual print using direct function calls
 #print(add(1,2))
 
 #2) Doctest
